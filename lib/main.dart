@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_shopper/common/theme.dart';
 import 'package:provider_shopper/models/cart.dart';
 import 'package:provider_shopper/models/catalog.dart';
+import 'package:provider_shopper/models/user.dart';
 import 'package:provider_shopper/screens/cart.dart';
 import 'package:provider_shopper/screens/catalog.dart';
 import 'package:provider_shopper/screens/login.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         // In this sample app, CatalogModel never changes, so a simple Provider
         // is sufficient.
         Provider(create: (context) => CatalogModel()),
+        ChangeNotifierProvider.value(value: UserModel()),
         // CartModel is implemented as a ChangeNotifier, which calls for the use
         // of ChangeNotifierProvider. Moreover, CartModel depends
         // on CatalogModel, so a ProxyProvider is needed.

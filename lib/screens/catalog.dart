@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_shopper/models/cart.dart';
 import 'package:provider_shopper/models/catalog.dart';
+import 'package:provider_shopper/models/user.dart';
 
 class MyCatalog extends StatelessWidget {
   @override
@@ -15,6 +16,7 @@ class MyCatalog extends StatelessWidget {
         slivers: [
           _MyAppBar(),
           SliverToBoxAdapter(child: SizedBox(height: 12)),
+          SliverToBoxAdapter(child: SizedBox(height: 20, child: _MyUserInfo())),
           SliverList(
             delegate: SliverChildBuilderDelegate(
                 (context, index) => _MyListItem(index)),
@@ -118,6 +120,20 @@ class _MyListItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _MyUserInfo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Consumer<UserModel>(builder: (context, model, _) {
+        return Row(children: [
+          Text('username:${model.name}'),
+          Text('login:${model.isLogon}')
+        ]);
+      }),
     );
   }
 }
