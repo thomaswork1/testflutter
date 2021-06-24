@@ -43,7 +43,7 @@ class LoginForm extends StatelessWidget {
                 'Welcome',
                 style: Theme.of(context).textTheme.headline1,
               ),
-              UsernameTextField(nameController, 'username'),
+              UsernameTextField(nameController, ''),
               UsernameTextField(pwController, 'Password', obscureText: true),
               SizedBox(
                 height: 24,
@@ -89,6 +89,20 @@ class _UsernameTextFieldState extends State<UsernameTextField> {
         obscureText: widget.obscureText,
         controller: widget.controller,
         decoration: InputDecoration(
+          prefixIcon: Container(
+            child: Text('852'),
+          ),
+          isDense: true,
+          fillColor: Colors.blue,
+          filled: false,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderSide: BorderSide(color: Colors.green, width: 1)),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderSide: BorderSide(color: Colors.red, width: 1)),
           hintText: widget.hitText,
         ),
         validator: (value) {
